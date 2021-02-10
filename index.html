@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>zint content</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="assets/main.css">
     <script src="assets/snap.svg-min.js"></script>
     <script src="assets/snap.svg-min.js"></script>
@@ -13,58 +15,18 @@
 </head>
 
 <body>
-    <div class="zint-page">
+    <div class="page">
 
-        <div class='zint-content-title'>
-            <div class='zint-content-title-running'>
-
-                <p>One Page</p>
-            </div>
-            <div class='zint-content-title-slide'>
-
-                <p>Step-by-step with board</p>
-            </div>
+        <div class='title'>
+            <h1>Pulley Interactive Learning</h1>
         </div>
-
-        <!-- step-by-step block -->
-
-        <div class="step-by-stem-block">
+        <div class="step-block">
             <div class="flex-row">
-
-                <div class="step-by-step-description">
-                    <div class="step-by-step-description-item">
-
-                        <ul>
-                            <li>This is the first step</li>
-                        </ul>
-                    </div>
-                    <div class="step-by-step-description-item">
-
-                        <ul>
-                            <li>This is the second step</li>
-                        </ul>
-
-                    </div>
-                    <div class="step-by-step-description-item">
-
-                        <ul>
-                            <li>This is the third step.</li>
-                            <li>Note that there is no new drawing here.</li>
-                        </ul>
-                    </div>
-                    <div class="step-by-step-description-item">
-
-                        <ul>
-                            <li>This is the fourth and last step</li>
-                        </ul>
-                      
-
-                    </div>
-                </div><!-- step-by-step-description -->
-            </div><!-- flex-row -->
+                <div id="step-description">
+                    <!-- FILLED FROM JS -->
+                </div>
+            </div>
         </div>
-
-        <!-- step-by-stem-block -->
     </div>
 </body>
 

@@ -83,14 +83,14 @@ class zintSnapUtility {
      * @param endAngle
      * @returns {string}
      */
-    static describeArc(cx, cy, radius, startAngle, endAngle) {
+    static describeArc(cx, cy, radius, startAngle, endAngle, swing = 0) {
         // source: https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle
-        let start = zintSnapUtility.polarToCartesian(cx, cy, radius, endAngle);
-        let end = zintSnapUtility.polarToCartesian(cx, cy, radius, startAngle);
+        let start = zintSnapUtility.polarToCartesian(cx, cy, radius, startAngle);
+        let end = zintSnapUtility.polarToCartesian(cx, cy, radius, endAngle);
         let largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
         return [
             "M", start.x, start.y,
-            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
+            "A", radius, radius, 0, largeArcFlag, swing, end.x, end.y
         ].join(" ");
     }
 }
