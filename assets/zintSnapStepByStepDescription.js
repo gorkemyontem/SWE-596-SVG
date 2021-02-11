@@ -8,9 +8,9 @@ class ZintSnapStepByStepDescription {
         this.snap = Snap;
         this.arrDiv = [];
         this.arrDiv = document.getElementsByClassName(c_description_item);
-        let stepDescription = document.getElementById("step-description")
+        let stepDescription = document.getElementById('step-description');
         let span = document.createElement('span');
-        span.id = "page-number"
+        span.id = 'page-number';
         stepDescription.appendChild(span);
 
         this.arrDiv[0].style.display = 'block';
@@ -80,7 +80,7 @@ class ZintSnapStepByStepDescription {
         if (this.isBoard) {
             this.currentSlide = el;
             this.arrSnap[this.currentSlide]();
-            this.changePageNumber()
+            this.changePageNumber();
         }
     }
 
@@ -88,7 +88,7 @@ class ZintSnapStepByStepDescription {
         if (this.isBoard) {
             this.currentSlide = this.steps[0];
             this.arrSnap[0]();
-            this.changePageNumber()
+            this.changePageNumber();
         }
     }
 
@@ -99,7 +99,7 @@ class ZintSnapStepByStepDescription {
             this.currentSlide++;
             if (this.isBoard) {
                 this.arrSnap[this.currentSlide]();
-                this.changePageNumber()
+                this.changePageNumber();
             }
             this.isForward = true;
         }
@@ -113,7 +113,7 @@ class ZintSnapStepByStepDescription {
             this.isForward = false;
             if (this.isBoard) {
                 this.arrSnap[this.currentSlide]();
-                this.changePageNumber()
+                this.changePageNumber();
             }
             // direction
             this.isForward = true;
@@ -135,10 +135,21 @@ class ZintSnapStepByStepDescription {
         }
     }
 
-    changePageNumber(){
-        let pageNumber = document.getElementById("page-number");
-        if(this.currentSlide > 0) {
+    changePageNumber() {
+        let pageNumber = document.getElementById('page-number');
+        if (this.currentSlide > 0) {
             pageNumber.innerText = this.currentSlide;
+        }
+
+        var aTags = document.getElementsByTagName('button');
+        var found;
+
+        for (var i = 0; i < aTags.length; i++) {
+            if (aTags[i].textContent == pageNumber.innerText) {
+                aTags[i].classList.add("active");
+            } else {
+                aTags[i].classList.remove("active")
+            }
         }
     }
     switchDiv(indexPresent, indexNext) {
@@ -236,84 +247,3 @@ class ZintSnapStepByStepDescription {
         opacity: '0.3',
     };
 }
-
-// test(){
-
-//     this.p.draggableRect = function (x, y, w, h) {
-//         var rect = this.rect(0,0,w,h).transform("T"+x+","+y);
-//         rect.paths = {};
-//         rect.drag(dragMove, dragStart, dragEnd);
-//         rect.updatePaths = updatePaths;
-//         rect.getCoordinates = getCoordinates;
-//         rect.getPathString = getPathString;
-//         rect.addPath = addPath;
-//         rect.removePath = removePath;
-
-//         return rect;
-//     };
-
-//     var rect1 = this.p.draggableRect(0,0,40,40);
-//     var rect2 = this.p.draggableRect(100,100,40,40);
-//     var rect3 = this.p.draggableRect(100,0,40,40);
-
-//     rect1.addPath(rect2);
-//     rect2.addPath(rect3);
-
-//     function dragStart(x, y, e) {
-//         this.current_transform = this.transform();
-//     }
-
-//     function dragMove(dx, dy, x, y, e) {
-//         console.log(this.current_transform+'T'+dx+','+dy);
-//         this.transform(this.current_transform+'T'+dx+','+dy);
-//         this.updatePaths();
-//     }
-
-//     function dragEnd(e) {
-//         this.current_transform = this.transform();
-//     }
-
-//     function updatePaths() {
-//         var key;
-//         for(key in this.paths) {
-//             this.paths[key][0].attr({"path" : this.getPathString(this.paths[key][1])});
-//             this.paths[key][0].prependTo(this.paper);
-//         }
-//     }
-
-//     function getCoordinates() {
-//         return [this.matrix.e + (this.node.width.baseVal.value / 2),
-//           this.matrix.f + (this.node.height.baseVal.value / 2)];
-//     }
-
-//     function getPathString(obj) {
-//         var p1 = this.getCoordinates();
-//         var p2 = obj.getCoordinates();
-//         return "M"+p1[0]+","+p1[1]+"L"+p2[0]+","+p2[1];
-//     }
-
-//     function addPath(obj) {
-//         var id = obj.id;
-//         var path = this.paper.path(this.getPathString(obj)).attr({fill:'none', stroke:'blue', strokeWidth:1});
-//         path.prependTo(this.paper);
-//         this.paths[id] = [path, obj];
-//         obj.paths[this.id] = [path, this];
-//     }
-
-//     function removePath(obj) {
-//             var id = obj.id;
-//         if (this.paths[id] != null) {
-//                 this.paths[id][0].remove();
-//             this.paths[id][1] = null;
-//             delete this.paths[id];
-
-//             obj.paths[this.id][1] = null;
-//             delete obj.paths[this.id];
-//         }
-//     }
-
-//     this.snap.plugin(function (Snap, Element, Paper, global, Fragment) {
-
-//     });
-
-// }
